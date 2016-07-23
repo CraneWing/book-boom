@@ -1,0 +1,56 @@
+  <div class="row">	
+    <div class="col-md-8 col-md-offset-2">
+  		<h2 class="page-header text-center">Sign Up</h2>
+      <form name="signupForm" ng-submit="signup()">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" name="first_name" class="form-control input-md" ng-model="first_name">
+        </div>
+        <div class="form-group">
+          <label for="last_name">First Name</label>
+          <input type="text" name="last_name" class="form-control input-md" ng-model="last_name">
+        </div>
+        <div class="form-group">
+          <label for="screen_name">Screen Name*</label>
+          <input type="text" name="screen_name" class="form-control input-md" required ng-model="screen_name">
+          <div class="help-block" ng-messages="signupForm.screen_name.$error" ng-if="signupForm.screen_name.$dirty">
+            <div class="text-red" ng-message="required">Screen name is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="city">City*</label>
+          <input type="text" name="city" class="form-control input-md" required ng-model="city">
+          <div class="help-block" ng-messages="signupForm.city.$error" ng-if="signupForm.city.$dirty">
+            <div class="text-red" ng-message="required">City required (to show trade location).</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="state">State*</label>
+          <input type="text" name="state" class="form-control input-md" required ng-model="state">
+          <div class="help-block" ng-messages="signupForm.state.$error" ng-if="signupForm.state.$dirty">
+            <div class="text-red" ng-message="required">State required (to show trade location).</div>
+          </div>
+        </div> 
+        <div class="form-group">
+          <label for="email">Email (will be username)*</label>
+          <input type="email" name="email" class="form-control input-md" required ng-model="email">
+          <div class="help-block" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$dirty">
+            <div class="text-red" ng-message="required">Email is required.</div>
+            <div class="text-red" ng-message="email">Invalid email.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password*</label>
+          <input type="password" name="password" class="form-control input-md" required ng-model="password" ng-minlength="5">
+          <div class="help-block" ng-messages="signupForm.password.$error" ng-if="signupForm.password.$dirty">
+            <div class="text-red" ng-message="required">Password is required.</div>
+            <div class="text-red" ng-message="minlength">Password must be five or more characters.</div>
+          </div>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <br>
+      <p>If you already have an account, you can <a href="#/login">go here</a> to login.</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,2 @@
+localStorage.removeItem('satellizer_token');
+localStorage.removeItem('currentUser');

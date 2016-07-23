@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="col-md-9 col-md-offset-2">
+		<h1>Search for Book Info</h1>
+		
+		<p>On this page you can search for titles as compiled by Google Books. Check the results and see if the book you want to trade, or one as close to it as possible, is in the list. Then simply click the book, and a trade will be created. Book title must be entered.</p>
+		
+		<form method="post" ng-submit="searchBooks()">
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="text" class="form-control input-md" name="title" ng-model="formData.title">
+			</div>
+			<h3>Optional Information</h3>
+			<div class="form-group">
+				<label for="author">Author</label>
+				<input type="text" class="form-control input-md" name="author" ng-model="formData.author">
+			</div>
+			<div class="form-group">
+				<label for="publisher">Publisher</label>
+				<input type="text" class="form-control input-md" name="publisher" ng-model="formData.publisher">
+			</div>
+			<div class="form-group">
+				<label for="isbn">ISBN (10- or 13-digit)</label>
+				<input type="text" class="form-control input-md" name="isbn" ng-model="formData.isbn">
+			</div>
+			<button type="submit" class="btn">Submit</button>
+		</form>
+	</div>
+</div>
+<div class="row" vertilize-container ng-show="areResults">
+	<h1 class="page-header">Your Results</h1>
+	<div ng-repeat-start="book in bookData.items" class="clearfix" ng-if="$index % 4 == 0"></div>
+		<div ng-repeat-end class="col-md-3 book-item" style="z-index:1">
+			<div class="well book-detail">
+				<div vertilize>
+					<a ng-controller="TradeCtrl" ng-click="addTradeFromList(book.id)">
+						<img ng-show="{{!book.volumeInfo.imageLinks.thumbnail}}" ng-src="/assets/img/book-cover.jpg" class="img-responsive" class="center-block"> 
+						<img ng-show="{{book.volumeInfo.imageLinks}}" ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" class="center-block">
+					</a>	
+					<p class="book-title text-center">
+						<strong>{{book.volumeInfo.title}}</strong>
+					</p>
+					<p><strong>Written By:</strong> 
+						<span ng-repeat="author in book.volumeInfo.authors">
+							{{author}}
+						</span>
+					</p>
+					<p>
+						<strong>Publisher:</strong> {{book.volumeInfo.publisher}}
+					</p>
+					<p>
+						<strong>Published:</strong> {{formatDate(book.volumeInfo.publishedDate)}}
+					</p>
+					<p>
+						<strong>ISBN:</strong> {{book.volumeInfo.industryIdentifiers[0].identifier}}
+					</p>
+			</div>
+		</div>
+	</div>
+</div>

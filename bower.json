@@ -1,0 +1,33 @@
+{
+  "name": "book-boom",
+  "description": "Free Code Camp challenge to create a book trading club",
+  "main": "server.js",
+  "authors": [
+    "V Mielke"
+  ],
+  "license": "MIT",
+  "homepage": "https://book-boom-cranewing.c9users.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular-ui-router": "^0.3.1",
+    "angular-ui-router-title": "^0.0.4",
+    "angular-animate": "^1.5.7",
+    "angular-bootstrap": "^1.3.3",
+    "angular-moment": "^0.10.3",
+    "angular-resource": "^1.5.7",
+    "satellizer": "^0.14.1",
+    "angular-messages": "^1.5.7",
+    "angular-tooltips": "^1.1.4"
+  },
+  "resolutions": {
+    "angular": ">=1.4.0"
+  }
+}

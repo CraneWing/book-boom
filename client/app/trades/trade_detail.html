@@ -1,0 +1,62 @@
+<div class="row">
+  <h2 class="page-header text-center">Trade Info</h2>
+	  <div class="col-md-2 col-md-offset-2">
+		  <img ng-src="{{trade.cover_url}}" alt="{{trade.title}}">
+		</div>
+		<div class="col-md-6">
+		  <h4>
+		    Book Details <span class="fa fa-book fa-2x trade-icon"></span>
+		  </h4>
+		  <ul class="trade-detail-list">
+		    <li>
+		      <strong>Title:</strong> {{trade.title}}
+		    </li>
+		    <li>
+		      <strong>Author:</strong>
+		      <span ng-repeat="author in trade.authors">
+		        {{author}}
+		      </span>
+		    </li>
+		    <li>
+		      <strong>Publisher:</strong> {{trade.publisher}}
+		    </li>
+		    <li>
+		      <strong>Published:</strong> {{ formatDate(trade.publish_date) }}
+		    </li>
+		    <li><strong>ISBN:</strong> {{trade.isbn}}</li>
+		  </ul>
+		  <h4>
+		    Trade Details <span class="fa fa-refresh fa-2x trade-icon"></span>
+		  </h4>
+		  <ul class="trade-detail-list">
+		    <li>
+		      <strong>Trader:</strong> {{trade.trader}}
+		    </li>
+		    <li>
+		      <strong>Location:</strong> {{trade.trader_location.city}},  {{trade.trader_location.state}}
+		    </li>
+		    <li>
+		      <strong>Trade Posted:</strong> {{ formatDate(trade.created_at) }}
+		    </li>
+		    <li>
+		      <strong>Trade Status:</strong> 
+		      {{trade.user_wants === null ? 'Available' : trade.user_wants}}
+		       <a class="btn" ng-click="contactTrader(trade.id, currentUser.id)" ng-if="{{trade.trader !== currentUser.screen_name && trade.user_wants !== null}}">
+  		      Contact User
+  		    </a>
+		    </li>
+		  </ul>
+		  <div ng-show="trade.trader == currentUser.screen_name">
+		    <p>
+  		    <strong>This is your trade.</strong>
+  		  </p>
+  		  <p>
+		      <a href="#" class="btn btn-danger">Delete</a>
+		    </p>
+		  </div>
+		  <p ng-show="trade.trader !== currentUser.screen_name">
+		    <a href="#" class="btn">Contact Trader</a>
+		  </p>
+		</div>
+	</div>
+</div

@@ -1,0 +1,28 @@
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h2 class="page-header text-center">Login</h2>
+      <form name="loginForm" ng-submit="emailLogin()">
+        <div class="form-group">
+          <label for="email">Username (your email)</label>
+          <input server-error type="email" name="email" class="form-control input-md form-well-input" required ng-model="email">
+          <div class="help-block" ng-messages="loginForm.email.$error" ng-if="loginForm.email.$dirty">
+            <div class="text-red" ng-message="required">Email is required.</div>
+            <div class="text-red" ng-message="email">Invalid email address.</div>
+            <div class="text-red" ng-message="server">{{errorMessage.email}}</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input server-error type="password" name="password" class="form-control input-md form-well-input" required ng-model="password">
+           <div class="help-block" ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
+              <div class="text-red" ng-message="required">Password is required.</div>
+              <div class="text-red" ng-message="server">{{errorMessage.password}}</div>
+          </div>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <br>
+      <p>Don't have an account? <a href="#/signup">Go here</a> to sign up.</p>
+	</div>
+</div>

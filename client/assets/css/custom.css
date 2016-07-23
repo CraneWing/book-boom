@@ -1,0 +1,245 @@
+body {
+	font-family: 'Alike Angular';
+	font-size: 16px;
+	background: url('../img/color-dots.jpg') repeat-y;
+}
+
+/***** general **********/
+.container-main {
+	background-color: #fff;
+	margin-top: 40px;
+	padding-bottom: 30px;
+}
+
+.uni-height-wrap {
+	display: block;
+}
+
+.text-red {
+  color: #ff0000;
+}
+
+.drop-cap {
+	float: left; font-size: 75px;
+	line-height: 60px;
+	padding: 4px 8px 0 3px;
+}
+
+.trade-item img,
+.user-trade-item img{
+	height: 180px;
+	width: 120px;
+}
+
+/*** sitewide form styles ***/
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+	border-radius: 0 !important;
+	border-color: #e54e6d !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+	width: 85%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+	border-color: #e54e6d;
+	box-shadow: none;
+}
+
+.btn {
+	background-color: #e54e6d;
+	border-radius: 0;
+	padding: 8px 12px;
+	color: #fff;
+}
+
+.btn:hover {
+	background-color: #bf465e;
+	color: #fff;
+}
+
+.btn-other {
+	background-color: #98d5d6;
+}
+
+/******* navbar *********/
+
+.navbar {
+	height: 100px;
+	background-color: #98d5d6;
+	color: #333;
+}
+
+.navbar-nav li a,
+.navbar-brand {
+	color: #000;
+}
+
+.navbar-brand {
+	font-size: 30px;
+}
+
+#brand-wrapper {
+	display: block;
+	position: relative;
+	min-height: 85px;
+}
+
+#brand-wrapper:after {
+	content: ''; 
+  background: black; 
+  position: absolute;
+  height: 97%;
+  top: 7px;
+  bottom: 0; 
+  left: 96%; 
+  width: 1px;
+}
+
+#tagline {
+	float: left;
+	margin-top: -5px;
+	line-height: 22px;
+	font-size: 18px;
+}
+
+.navbar li a {
+	font-size: 13px;
+	margin-left: -10px;
+	margin-top: 5px;
+}
+
+.navbar-nav li a:hover {
+	background: transparent;
+	opacity: 0.85;
+	color: #666;
+}
+
+.navbar-nav li a:focus {
+	background: transparent;
+}
+
+.navbar-nav li a img {
+	height: 55px;
+	width: 55px
+}
+
+/***** homepage *****/
+#home-image {
+	float: right;
+	padding: 15px;
+	border: 1px solid #5da194;
+	border-radius: 50%;
+	margin-left: -10px;
+}
+
+/***** search/add ****/
+.book-detail {
+	width: 90%;
+	background-color: #e3f2f5 !important;
+	border-color: #5da194 !important;
+	font-size: 14px;
+}
+
+.book-detail a {
+	cursor: pointer;
+}
+
+.book-detail .book-title {
+	font-size: 16px;
+}
+
+/****** trade page ****/
+.trade-item {
+	text-align: center;
+	padding: 10px;
+}
+
+.trade-item img {
+   position: relative;
+}
+
+/*** trade page buttons ***/
+.trade-choice {
+	cursor: pointer;	
+}
+
+#trade-menu {
+	padding: 15px 0;
+} 
+
+.trade-img-wrap {
+	float: left;
+	padding-top: 8px;
+	text-align: center;
+	border: 1px solid #5da194;
+	border-radius: 50%;
+	height: 80px;
+	width: 80px;
+	background-color: #fff;
+}
+.trade-img-wrap img {
+	width: 80%;
+}
+
+.triangle {
+	border-bottom: 55px solid #000;
+	border-left: 55px solid transparent;
+	border-right: 55px solid transparent;
+	left: 71px;
+	position: absolute;
+	top: -8px;
+	transform: rotate(45deg);
+	z-index: 10;
+}
+
+.triangle > span {
+	color: #fff;
+	font-size: 12px;
+	line-height: 15px;
+	text-transform: uppercase;
+	position: absolute;
+	right: -20px;
+	top: 15px;
+}
+
+.trade-menu-item {
+	margin-top: 9%;
+	margin-left: 10%;
+	width: 150px;
+	background-color: #ccdada;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.offer {
+	border-bottom: 55px solid #598f82;
+}
+
+.no-offer {
+	border-bottom: 55px solid #e00B08;
+}
+
+.trade-menu-item p {
+	padding: 10px 0;
+	font-size: 14px;
+	text-align: center;
+}
+
+/*** trade details ***/
+.trade-detail-list {
+	list-style: none;
+}
+
+.trade-icon {
+	margin: 15px 0 0 10px;
+	color: #e54e6d;
+}

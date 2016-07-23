@@ -1,0 +1,36 @@
+<div class="row" id="trade-menu">
+	<h1 class="page-header text-center">Current Trades</h1>
+	<div class="col-md-3 trade-choice">
+		<div class="trade-img-wrap">
+			<img src="/assets/img/all-trades.png">
+		</div>
+		<div class="trade-menu-item">
+			<p>All Trades</p>
+		</div>
+	</div>
+	<div class="col-md-3 trade-choice">
+		<div class="trade-img-wrap">
+			<img src="/assets/img/your-trades.png">
+		</div>
+		<div class="trade-menu-item">
+			<p>Your Trades</p>
+		</div>
+	</div>
+</div>
+<div class="trade-results">
+	<p ng-if="isMessage">No trades yet. If you have a trade, add one now! <a href="#/search">Search for titles</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
+
+	<div ng-show="!isMessage">
+		<div class="clearfix trade-rows" ng-if="$index % 4 == 0"></div>
+		<div ng-repeat="trade in trades" class="col-md-2 trade-item">
+			<apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="{{trade.title}}<br> Trader: <strong>{{trade.trader}}</strong>"></span>
+			<div class="triangle {{trade.user_wants === null ? ' no-offer' : ' offer'}}">
+				<span>{{trade.offer_made === false ? 'No offer' : 'Offer'}}</span>
+			</div>
+			<a href="#/trades/{{trade._id}}">
+				<img ng-src="{{trade.cover_url}}" class="center-block">
+			</a>
+		</div>
+	</div>
+</div>
+	
