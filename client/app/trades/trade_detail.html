@@ -40,10 +40,7 @@
 		    </li>
 		    <li>
 		      <strong>Trade Status:</strong> 
-		      {{trade.user_wants === null ? 'Available' : trade.user_wants}}
-		       <a class="btn" ng-click="contactTrader(trade.id, currentUser.id)" ng-if="{{trade.trader !== currentUser.screen_name && trade.user_wants !== null}}">
-  		      Contact User
-  		    </a>
+		      {{trade.user_wants === null ? 'Available' : 'Offer by ' + trade.user_wants}}
 		    </li>
 		  </ul>
 		  <div ng-show="trade.trader == currentUser.screen_name">
@@ -54,8 +51,8 @@
 		      <a href="#" class="btn btn-danger">Delete</a>
 		    </p>
 		  </div>
-		  <p ng-show="trade.trader !== currentUser.screen_name">
-		    <a href="#" class="btn">Contact Trader</a>
+		  <p ng-if="trade.trader !== currentUser.screen_name && trade.user_wants === null">
+		    <a ng-click="contactTrader(trade._id)" class="btn">Contact Trader</a>
 		  </p>
 		</div>
 	</div>

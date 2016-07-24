@@ -1,23 +1,36 @@
 angular.module('booksApp')
 	.controller('TradeAllCtrl', [
 		'$scope', 'tradeFactory', '$http',
-			function($scope, tradeFactory, $http) {      
-      // get all trades for trades page
+			function($scope, tradeFactory, $http) {
+			 $scope.fade = false;
 		
-			$http.get('/api/trades')
-				.success(function(results) {
-					// console.log(results);
-
-					if (results.trades === null) {
-						$scope.isMessage = true;
-					}
-					else {
-						$scope.isMessage = false;
-						$scope.trades = results;
-					}
-				})
-				.error(function(err) {
-					console.log('An error occurred: ' + err);
-				});
+  		 // get all trades
+  		 var getAllTrades = function() {
+  		   tradeFactory.getAllTrades()
+  		    .success(function(results) {
+  		      $scope.fade = true;
+  		      $scope.trades = results;
+  		    });
+  		 };
+  		 
+  		 // get all trades again when All Trades
+  		 // button clicked
+  		 $scope.allTrades = function() {
+  		   $scope.fade = false;
+  		   getAllTrades();
+  		 };
+  		 
+  		 // get only user trades
+  		 $scope.getUserTrades = function(userId) {
+  		   $scope.fade = false;
+  			 tradeFactory.getUserTrades(userId)
+  		    .success(function(results) {
+  		      $scope.trades = results;
+  		      $scope.fade = true;
+  		    });
+  			};
+  		
+  			
+  		getAllTrades();
 			
 	}]);

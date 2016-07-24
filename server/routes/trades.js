@@ -64,7 +64,7 @@ router.post('/add/:id', function(req, res) {
 				authors.push('Not given');
 			}
 			
-			var coverURL = book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : '/assets/img/book-cover.jpg';
+			var coverURL = book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail.replace('http:', 'https:') : '/assets/img/book-cover.jpg';
 
 			var publisher = book.volumeInfo.publisher ? book.volumeInfo.publisher : 'Not given';
 			var publishDate = book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : 'Not given';
@@ -100,10 +100,46 @@ router.post('/add/:id', function(req, res) {
 		else if (response.statusCode == 404) {
 		 	console.log('API search error: ' + err);
 	  }
-			
 	}
 
   request(options, callback);	
+});
+
+router.get('/all/:user_id', function(req, res) {
+	Trade.find({ trader_id: req.params.user_id }, function(err, trades) {
+		if (err) res.send(err);
+		
+		if (trades.length > 0) {
+			res.json(trades);
+		}
+		else {
+			res.json({
+				message: 'User has no trades'
+			});
+		}
+	});
+});
+
+router.post('/update', function(req, res) {
+	var tradeId = req.body.trade_id;
+	var userWants = req.body.screen_name;
+	var userWantsId = req.body.user_id;
+	
+	Trade.findById({ _id: tradeId}, function(err, trade) {
+		if (err) res.send(err);
+		
+		trade.user_wants = userWants;
+		trade.user_wants_id = userWantsId;
+		trade.offer_made = true;
+		
+		trade.save(function(err) {
+			if (err) res.send(err);
+			
+			res.json({
+				message: 'Your trade notification has been sent!'
+			});
+		});
+	});
 });
 
 module.exports = router;

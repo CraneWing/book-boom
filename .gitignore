@@ -1,5 +1,6 @@
 .c9
-data
+data/
 client/assets/lib
 node_modules
 server/config
+mongod

@@ -18,6 +18,13 @@ angular.module('booksApp', [
 						$title: function() { return 'Welcome'; }
 					}
 				 })
+				.state('/using', {
+					url: '/using',
+					templateUrl: 'app/static/using.html',
+					resolve: {
+						$title: function() { return 'About'; }
+					}
+				 }) 
 				.state('/search', {
 					url: '/search',
 					templateUrl: 'app/search/search.html',

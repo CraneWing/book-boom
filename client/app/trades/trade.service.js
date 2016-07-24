@@ -4,9 +4,9 @@ angular.module('booksApp')
 		var data = {};
 		var currentUser = $rootScope.currentUser;
 
-		// stocks that load on very first page load
-		tradeFactory.getTrades = function(){
-			return $http.post('/api/trades', trades)
+		// trades that load on very first page load
+		tradeFactory.getAllTrades = function(){
+			return $http.get('/api/trades')
 				.success(function(results) {
 					// console.log(results);
 					data = results;
@@ -19,6 +19,17 @@ angular.module('booksApp')
 		
 		tradeFactory.getTrade = function(id){
 			return $http.post('/api/trades/' + id)
+				.success(function(result) {
+					data = result;
+					return result;
+				})
+				.error(function(err) {
+					if (err) console.log(err);
+				});
+		};
+		
+		tradeFactory.getUserTrades = function(userId){
+			return $http.get('/api/trades/all/' + userId)
 				.success(function(result) {
 					data = result;
 					return result;
@@ -54,9 +65,20 @@ angular.module('booksApp')
 					if (err) console.log(err);
 				});
 		};
+		
+		tradeFactory.updateTrade = function(tradeData) {
+			return $http.post('/api/trades/update', tradeData)
+			.success(function(results) {
+				data = results;
+				return data;
+			})
+			.error(function(err) {
+				if (err) console.log(err);
+			});
+		};
 
 		tradeFactory.deleteTrade = function(tradeID) {
-			return $http.post('/api/stocks/delete', tradeId)
+			return $http.post('/api/trades/delete', tradeId)
 				.success(function(results) {
 					data = results;
 					return data;

@@ -16,16 +16,20 @@
     </div>
   </div>
 </div>
-<div class="row">
-	<div class="col-md-12">
-		<h2 class="page-header text-center">Your Trades</h2>
-		<p ng-show="!areTrades">You don't have any trades yet. You can <a href="#/search">search for titles</a> or <a href="#/trades/add">add a trade manually.</a></p>
-  </div>
+<div class="trade-results">
+	<p ng-show="!areTrades">No trades yet. If you have a trade, add one now! <a href="#/search">Search for titles</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
+
+	<div>
+		<div class="clearfix trade-rows" ng-if="$index % 4 == 0"></div>
+		<div ng-repeat="trade in trades | orderBy: '-created_at'" class="col-md-2 trade-item">
+			<apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="{{trade.title}}<br> Trader: <strong>{{trade.trader}}</strong>">
+			<div class="triangle {{trade.user_wants === null ? ' no-offer' : ' offer'}}">
+				<span>{{trade.offer_made === false ? 'No offer' : 'Offer made'}}</span>
+			</div>
+			<a href="#/trades/{{trade._id}}">
+				<img ng-src="{{trade.cover_url}}" class="center-block">
+			</a>
+		</div>
+	</div>
 </div>
-  <div class="row" ng-show="areTrades">
-    <div class="col-md-2 user-trade-item" ng-repeat="trade in trades">
-      <apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="<strong>{{trade.title}}</strong>"></span>
-      <img src="{{trade.cover_url}}" alt="{{trade.title}}">
-    </div>
-  </div>
-</div>
+

@@ -13,8 +13,6 @@ angular.module('booksApp')
 	 			last_name: $scope.last_name === undefined ? null : $scope.last_name
 	 		};
 
-	 		console.log(user);
-
 	 		$auth.signup(user)
 	 			.then(function(response) {
 	 				$location.url('/login');

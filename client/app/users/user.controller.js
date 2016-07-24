@@ -4,8 +4,6 @@ angular.module('booksApp')
 		function($scope, $auth, $rootScope, $http, $location, userFactory) {
 			var userId = $rootScope.currentUser.id;
 			
-			console.log($location.absUrl());
-			
 			$http.get('/api/users/' + userId)
 				.then(function(results) {
 					$scope.user = results.data.user;

@@ -11,11 +11,12 @@ router.get('/:id', function(req, res) {
   User.findOne({ _id: userId }, function(err, user) {
   	if (err) res.send(err);
   	
-  	Trade.find({user_trading_id: user.id}, function(err, userTrades) {
+  	Trade.find({trader_id: user.id}, function(err, userTrades) {
   		if (err) res.send(err);
   		
   		if (userTrades.length == 0) {
   			trades = null;
+  			
   		}
   		else {
   		  trades = userTrades;

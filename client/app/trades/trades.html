@@ -1,6 +1,6 @@
 <div class="row" id="trade-menu">
 	<h1 class="page-header text-center">Current Trades</h1>
-	<div class="col-md-3 trade-choice">
+	<div class="col-md-3 trade-choice" ng-click="allTrades(currentUser.id)">
 		<div class="trade-img-wrap">
 			<img src="/assets/img/all-trades.png">
 		</div>
@@ -8,7 +8,7 @@
 			<p>All Trades</p>
 		</div>
 	</div>
-	<div class="col-md-3 trade-choice">
+	<div class="col-md-3 trade-choice" ng-click="getUserTrades(currentUser.id)">
 		<div class="trade-img-wrap">
 			<img src="/assets/img/your-trades.png">
 		</div>
@@ -16,16 +16,19 @@
 			<p>Your Trades</p>
 		</div>
 	</div>
+	<div class="col-md-6">
+		<p ng-show="isAuthenticated()">Interested in trading for one of these books? Have some titles of your own you'd like to trade? You must first <a href="#/signup">sign up</a> for an account, and then you can get trading!</p>
+	</div>
 </div>
 <div class="trade-results">
 	<p ng-if="isMessage">No trades yet. If you have a trade, add one now! <a href="#/search">Search for titles</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
 
 	<div ng-show="!isMessage">
 		<div class="clearfix trade-rows" ng-if="$index % 4 == 0"></div>
-		<div ng-repeat="trade in trades" class="col-md-2 trade-item">
-			<apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="{{trade.title}}<br> Trader: <strong>{{trade.trader}}</strong>"></span>
+		<div ng-repeat="trade in trades | orderBy: '-created_at'" class="col-md-2 trade-item">
+			<apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="{{trade.title}}<br> Trader: <strong>{{trade.trader}}</strong>">
 			<div class="triangle {{trade.user_wants === null ? ' no-offer' : ' offer'}}">
-				<span>{{trade.offer_made === false ? 'No offer' : 'Offer'}}</span>
+				<span>{{trade.offer_made === false ? 'No offer' : 'Offer made'}}</span>
 			</div>
 			<a href="#/trades/{{trade._id}}">
 				<img ng-src="{{trade.cover_url}}" class="center-block">
