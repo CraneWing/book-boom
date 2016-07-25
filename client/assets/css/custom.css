@@ -70,6 +70,10 @@ input[type="password"]:focus {
 	background-color: #98d5d6;
 }
 
+.btn-other:hover {
+	background-color: #6691b7;
+}
+
 /******* navbar *********/
 
 .navbar {
@@ -164,7 +168,7 @@ input[type="password"]:focus {
 }
 
 .trade-item img {
-   position: relative;
+  position: relative;
 }
 
 /*** trade page buttons ***/
@@ -177,6 +181,7 @@ input[type="password"]:focus {
 
 #trade-menu {
 	padding: 15px 0;
+	width: 100%;
 } 
 
 .trade-img-wrap {
@@ -206,9 +211,9 @@ input[type="password"]:focus {
 	border-bottom: 55px solid #000;
 	border-left: 55px solid transparent;
 	border-right: 55px solid transparent;
-	left: 71px;
+	left: 38.5%;
 	position: absolute;
-	top: -8px;
+	top: -5%;
 	transform: rotate(45deg);
 	z-index: 10;
 }

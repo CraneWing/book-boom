@@ -1,7 +1,10 @@
 angular.module('booksApp')
 	.controller('TradeDetailCtrl', [
-		'$scope', '$rootScope', '$http', '$state', 'tradeFactory', '$auth',
-		function($scope, $rootScope, $http, $state, tradeFactory, $auth) {
+		'$scope', '$rootScope', '$http', 
+		'$state', 'tradeFactory', '$auth',
+		'$location',
+		function($scope, $rootScope, $http, $state,
+		tradeFactory, $auth, $location) {
 		  var tradeId = $state.params.id;
 		  var currentUser = $rootScope.currentUser;
       
@@ -9,6 +12,10 @@ angular.module('booksApp')
 				.success(function(result) {
 					$scope.trade = result;
 				});
+			
+			$scope.isAuthenticated = function() {
+			  return $auth.isAuthenticated();
+			};
 				
 			$scope.contactTrader = function(tradeId) {
 			  tradeFactory.updateTrade({
@@ -18,6 +25,7 @@ angular.module('booksApp')
 			  })
 			  .success(function(result) {
 			    console.log('trade updated!');
+			   $location.url('/trades');
 			  });
 			};
 			

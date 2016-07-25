@@ -8,18 +8,45 @@ var tradeSchema = new Schema({
 		type: String,
 		default: shortid.generate()
 	},
-	title: String, 
+	title: {
+		type: String,
+		default: null
+	},  
 	authors: [String], 
-	publisher: String,
-	cover_url: String, 
-	publish_date: String, 
-	isbn: String, 
-	trader: String,
-	trader_location: {
-	 city: String,
-	 state: String
+	publisher: {
+		type: String,
+		default: null
 	},
-	trader_id: String,
+	cover_url: {
+		type: String,
+		default: '/assets/img/book-cover.jpg'
+	}, 
+	publish_date: {
+		type: String,
+		default: null
+	}, 
+	isbn: {
+		type: String,
+		default: null
+	}, 
+	trader: {
+		type: String,
+		default: null
+	},
+	trader_location: {
+	 city: {
+	 	type: String,
+		default: null
+	 },
+	 state: {
+	 	type: String,
+		default: null
+	 }
+	},
+	trader_id: {
+		type: String,
+		default: null
+	},
 	user_wants: {
 		type: String,
 		default: null
@@ -31,6 +58,10 @@ var tradeSchema = new Schema({
 	offer_made: {
 		type: Boolean,
 		default: false
+	},
+	offer_made_at: {
+		type: Date,
+		default: null
 	},
 	created_at: {
 		type: Date,

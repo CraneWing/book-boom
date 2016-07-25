@@ -49,11 +49,13 @@
   		  </p>
   		  <p>
 		      <a href="#" class="btn btn-danger">Delete</a>
+		      &nbsp;
+		      <a href="#" class="btn btn-other" ng-show="trade.offer_made == true">Contact Other User</a>
 		    </p>
 		  </div>
-		  <p ng-if="trade.trader !== currentUser.screen_name && trade.user_wants === null">
+		  <p ng-if="trade.trader !== currentUser.screen_name && trade.user_wants === null && isAuthenticated()">
 		    <a ng-click="contactTrader(trade._id)" class="btn">Contact Trader</a>
 		  </p>
 		</div>
 	</div>
-</div
+</div>

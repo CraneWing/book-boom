@@ -1,6 +1,6 @@
 <div class="row" id="trade-menu">
 	<h1 class="page-header text-center">Current Trades</h1>
-	<div class="col-md-3 trade-choice" ng-click="allTrades(currentUser.id)">
+	<div class="col-md-3 trade-choice" ng-show="isAuthenticated()" ng-click="allTrades(currentUser.id)">
 		<div class="trade-img-wrap">
 			<img src="/assets/img/all-trades.png">
 		</div>
@@ -8,7 +8,7 @@
 			<p>All Trades</p>
 		</div>
 	</div>
-	<div class="col-md-3 trade-choice" ng-click="getUserTrades(currentUser.id)">
+	<div class="col-md-3 trade-choice" ng-show="isAuthenticated()" ng-click="getUserTrades(currentUser.id)">
 		<div class="trade-img-wrap">
 			<img src="/assets/img/your-trades.png">
 		</div>
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<div class="col-md-6">
-		<p ng-show="isAuthenticated()">Interested in trading for one of these books? Have some titles of your own you'd like to trade? You must first <a href="#/signup">sign up</a> for an account, and then you can get trading!</p>
+		<p ng-show="!isAuthenticated()">Want to trade for one of these books? Have some titles of your own you'd like to trade? You must first <a href="#/signup">sign up</a> for an account, and then you can get trading!</p>
 	</div>
 </div>
 <div class="trade-results">
@@ -31,7 +31,7 @@
 				<span>{{trade.offer_made === false ? 'No offer' : 'Offer made'}}</span>
 			</div>
 			<a href="#/trades/{{trade._id}}">
-				<img ng-src="{{trade.cover_url}}" class="center-block">
+				<img ng-src="{{trade.cover_url}}">
 			</a>
 		</div>
 	</div>

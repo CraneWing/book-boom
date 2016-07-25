@@ -1,5 +1,5 @@
 <div class="row">	
-  <div class="col-md-9 col-md-offset-2" >
+  <div class="col-md-10 col-md-offset-1">
 		<h1 class="page-header text-center">Your Dashboard &mdash; Welcome, {{user.screen_name}}!</h1>
 		<h2>Your Profile</h2>
 		<div id="profile-wrap">
@@ -17,9 +17,15 @@
   </div>
 </div>
 <div class="trade-results">
-	<p ng-show="!areTrades">No trades yet. If you have a trade, add one now! <a href="#/search">Search for titles</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
-
-	<div>
+	<p ng-show="!areTrades">You have not added any trades. <a href="#/search">Search for titles to add</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
+  <br>
+	<div ng-show="areTrades">
+	  <p>You have <strong>{{trades.length}}</strong> active {{trades.length > 1 || trades.length == 0 ? 'trades' : 'trade'}}.</p>
+	  <ul>
+	    <li ng-if="offers > 0"><strong>Offers:</strong> {{offers}}</li>
+	    <li ng-show="noOffers >= 1"><strong>No Offers:</strong> {{noOffers}}</li>
+	  </ul>
+	  <br>
 		<div class="clearfix trade-rows" ng-if="$index % 4 == 0"></div>
 		<div ng-repeat="trade in trades | orderBy: '-created_at'" class="col-md-2 trade-item">
 			<apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="{{trade.title}}<br> Trader: <strong>{{trade.trader}}</strong>">

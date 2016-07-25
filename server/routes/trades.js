@@ -42,6 +42,7 @@ router.get('/:id', function(req, res) {
 
 // add trade from book search menu
 router.post('/add/:id', function(req, res) {
+	console.log(req.body);
  	var bookId = req.params.id;
  	var userId = req.body.user_id;
  	var screenName = req.body.screen_name;
@@ -125,7 +126,7 @@ router.post('/update', function(req, res) {
 	var userWants = req.body.screen_name;
 	var userWantsId = req.body.user_id;
 	
-	Trade.findById({ _id: tradeId}, function(err, trade) {
+	Trade.findById({ _id: tradeId }, function(err, trade) {
 		if (err) res.send(err);
 		
 		trade.user_wants = userWants;

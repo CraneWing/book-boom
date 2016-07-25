@@ -32,7 +32,7 @@
 		<div ng-repeat-end class="col-md-3 book-item" style="z-index:1">
 			<div class="well book-detail">
 				<div vertilize>
-					<a ng-controller="TradeCtrl" ng-click="addTradeFromList(book.id)">
+					<a ng-click="addTradeFromList(book.id)">
 						<img ng-show="{{!book.volumeInfo.imageLinks.thumbnail}}" ng-src="/assets/img/book-cover.jpg" class="img-responsive" class="center-block"> 
 						<img ng-show="{{book.volumeInfo.imageLinks}}" ng-src="{{book.volumeInfo.imageLinks.thumbnail}}" class="center-block">
 					</a>	

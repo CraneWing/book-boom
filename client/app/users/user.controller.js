@@ -9,8 +9,17 @@ angular.module('booksApp')
 					$scope.user = results.data.user;
 					
 					if (results.data.trades !== null) {
+						$scope.offers = 0;
 						$scope.areTrades = true;
 						$scope.trades = results.data.trades;
+						
+						for (var i = 0; i < $scope.trades.length; i++) {
+							if ($scope.trades[i].offer_made) {
+								$scope.offers++;
+							}
+						} 
+						
+						$scope.noOffers = $scope.offers > 0 ? $scope.trades.length - $scope.offers : $scope.trades.length;
 					}
 					else {
 						$scope.areTrades = false;

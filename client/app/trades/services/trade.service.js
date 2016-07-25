@@ -3,6 +3,8 @@ angular.module('booksApp')
 		var tradeFactory = {};
 		var data = {};
 		var currentUser = $rootScope.currentUser;
+		
+		console.log(currentUser);
 
 		// trades that load on very first page load
 		tradeFactory.getAllTrades = function(){

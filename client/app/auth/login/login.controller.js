@@ -9,7 +9,7 @@ angular.module('booksApp')
 	 			password: $scope.password 
 	 		})
 	 		.then(function(response) {
-	 			console.log(response.data);
+	 			//console.log(response.data);
 
 	 			$window.localStorage.currentUser = JSON.stringify({
 	 			  id: response.data.user.id,
