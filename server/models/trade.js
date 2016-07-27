@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var uniqueValidator = require('mongoose-unique-validator');
 var shortid = require('shortid');
 
 // Google AP terms by each item
 var tradeSchema = new Schema({
 	_id: {
 		type: String,
-		default: shortid.generate()
+		'default': shortid.generate
 	},
 	title: {
 		type: String,
@@ -68,5 +69,7 @@ var tradeSchema = new Schema({
 		default: Date.now
 	}
 });
+
+tradeSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Trade', tradeSchema);

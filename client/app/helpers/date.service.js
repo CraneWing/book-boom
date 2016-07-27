@@ -1,5 +1,5 @@
 angular.module('booksApp')
-	.factory('dateFactory', ['$http', function($http, $rootScope) {
+	.factory('dateFactory', function() {
 	  var dateFactory = {};
 	  
 	  dateFactory.formatDate = function(date) {
@@ -17,4 +17,4 @@ angular.module('booksApp')
 		};
 		
 		return dateFactory;
-}]);
+});

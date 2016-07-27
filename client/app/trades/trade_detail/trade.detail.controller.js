@@ -2,9 +2,10 @@ angular.module('booksApp')
 	.controller('TradeDetailCtrl', [
 		'$scope', '$rootScope', '$http', 
 		'$state', 'tradeFactory', '$auth',
-		'$location',
+		'$location', 'dateFactory',
 		function($scope, $rootScope, $http, $state,
-		tradeFactory, $auth, $location) {
+		tradeFactory, $auth, $location, dateFactory) {
+		  
 		  var tradeId = $state.params.id;
 		  var currentUser = $rootScope.currentUser;
       
@@ -32,19 +33,8 @@ angular.module('booksApp')
 			$scope.isAuthenticated = function() {
 				return $auth.isAuthenticated();
 			};
-
-  		$scope.formatDate = function(date) {
-  			if (/\d{4}-\d{2}-\d{2}/.test(date)) {
-  				date = moment(date, 'YYYY-MM-DD').format('D MMM YYYY');
-  				return date;
-  			}
-  			else if (/\d{4}-\d{2}/.test(date)) {
-  				date = moment(date, 'YYYY-MM').format('MMM YYYY');
-  				return date;
-  			}
-  			else {
-  				return date;
-  			}
-  		};
-		
+			
+			$scope.formattedDate = function(date) {
+				return dateFactory.formatDate(date);
+			};
 }]);

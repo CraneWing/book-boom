@@ -39,7 +39,6 @@ router.post('/', function(req, res) {
  function callback(error, response, data) {
  	if (!error && response.statusCode == 200) {
 		books = JSON.parse(data);
-		
 		res.send(books);
 	}
 	else if (response.statusCode == 404) {

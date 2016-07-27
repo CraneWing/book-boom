@@ -19,7 +19,7 @@ angular.module('booksApp')
 				 }) 
 				.state('/search', {
 					url: '/search',
-					templateUrl: 'app/trades/trades_search/search.html',
+					templateUrl: 'app/trades/trades_search/trades_search.html',
 					controller: 'TradeSearchCtrl',
 					resolve: {
 						$title: function() { return 'Search'; }

@@ -21,9 +21,9 @@
 	</div>
 </div>
 <div class="trade-results">
-	<p ng-if="isMessage">No trades yet. If you have a trade, add one now! <a href="#/search">Search for titles</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
+	<p ng-if="trades.length == 0">No trades yet. If you have a trade, add one now! <a href="#/search">Search for titles</a> or <a href="#/trades/add"> add your trade manually</a>.</p>
 
-	<div ng-show="!isMessage">
+	<div ng-show="trades.length > 0">
 		<div class="clearfix trade-rows" ng-if="$index % 4 == 0"></div>
 		<div ng-repeat="trade in trades | orderBy: '-created_at'" class="col-md-2 trade-item">
 			<apan tooltips tooltip-side="right" tooltip-speed="medium" tooltip-template="{{trade.title}}<br> Trader: <strong>{{trade.trader}}</strong>">

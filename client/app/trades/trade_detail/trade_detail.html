@@ -21,7 +21,7 @@
 		      <strong>Publisher:</strong> {{trade.publisher}}
 		    </li>
 		    <li>
-		      <strong>Published:</strong> {{ formatDate(trade.publish_date) }}
+		      <strong>Published:</strong> {{formattedDate(trade.publish_date)}}
 		    </li>
 		    <li><strong>ISBN:</strong> {{trade.isbn}}</li>
 		  </ul>
@@ -36,11 +36,11 @@
 		      <strong>Location:</strong> {{trade.trader_location.city}},  {{trade.trader_location.state}}
 		    </li>
 		    <li>
-		      <strong>Trade Posted:</strong> {{ formatDate(trade.created_at) }}
+		      <strong>Trade Posted:</strong> {{formattedDate(trade.created_at)}}
 		    </li>
 		    <li>
 		      <strong>Trade Status:</strong> 
-		      {{trade.user_wants === null ? 'Available' : 'Offer by ' + trade.user_wants}}
+		      {{trade.user_wants === null ? 'Available' : 'Offer by ' + trade.user_wants + ' at ' + trade.offer_made_at}}
 		    </li>
 		  </ul>
 		  <div ng-show="trade.trader == currentUser.screen_name">

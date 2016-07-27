@@ -5,7 +5,10 @@ angular.module('booksApp')
 	'$rootScope',
 	'$location',
 	'tradeFactory',
-	function($scope, $http, $rootScope, $location, tradeFactory) {
+	'dateFactory',
+	function($scope, $http, $rootScope, $location,
+	tradeFactory, dateFactory) {
+		
 		var currentUser = $rootScope.currentUser;
 		
 		$scope.formData = {};
@@ -26,10 +29,14 @@ angular.module('booksApp')
 		};
 		
 		$scope.addTradeFromList = function(bookId) {
-				tradeFactory.addTradeFromList(bookId)
-					.success(function(results) {
-						$scope.message = results.message;
-						$location.url('/trades');
-			  	});
-			};
+			tradeFactory.addTradeFromList(bookId, currentUser)
+				.success(function(results) {
+					$scope.message = results.message;
+					$location.url('/trades');
+			 });
+		};
+		
+		$scope.formattedDate = function(date) {
+			return dateFactory.formatDate(date);
+		};
 	}]);
