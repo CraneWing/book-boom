@@ -1,0 +1,60 @@
+<div class="row">
+	<div class="col-md-9 col-md-offset-2">
+		<h1 class="page-header text-center">Manual Trade Addition</h1>
+		
+		<p>Here you can enter your trade yourself. Grab your book to provide the most information you can. The only required fields here are title and author, but the more details (and cover, if desired) you provide, the more it will enhance your trade listing. If you don't provide a cover image, a default cover will be automatically added to your trade.</p>
+		
+		<form name="addTradeForm">
+		    <div class="form-group">
+	      	<label for="title">Title*</label> 
+	      	<input type="text" name="title" ng-model="book.title" class="form-control" required>
+	      	<div class="help-block" ng-messages="addTradeForm.title.$error" ng-if="addTradeForm.title.$dirty">
+            <div class="text-red" ng-message="required">Title is required.</div>
+          </div>
+		    </div>
+
+	      <div class="form-group">
+	      	<label for="authors">Authors* (separate with commas)</label> 
+	      	<input type="text" name="authors" ng-model="book.authors" class="form-control"required>
+	      	<div class="help-block" ng-messages="addTradeForm.authors.$error" ng-if="addTradeForm.authors.$dirty">
+            <div class="text-red" ng-message="required">Authors(s) required.</div>
+          </div>
+	      </div>
+
+	      <div class="form-group">
+	      	<label for="publisher">Publisher</label> 
+	      	<input type="text" name="publisher" ng-model="book.publisher" class="form-control">
+	      </div>
+
+	      <div class="form-group">
+	      	<label for="year_published">Year Published:</label>
+	      	<input type="text" name="publish_date" ng-model="book.publish_date" class="form-control">
+	      </div>
+
+	      <div class="form-group">
+	      	<label for="isbn">ISBN (enter without dashes)</label>
+	      	<input type="text" name="isbn" ng-model="book.isbn" class="form-control">
+	      </div>
+	     
+	     	<div class="form-group">
+		      <label for="cover">Book Cover Image</label>
+		      <input type="file" ngf-select ng-model="cover" name="cover"    
+		             accept="image/*" ngf-max-size="2MB" 
+		             ngf-model-invalid="errorFile">
+		      <div class="help-block">
+            <div class="text-red" ng-show="addTradeForm.file.$error.maxSize">File is too large 
+		          {{errorFile.size / 1000000|number:1}}MB: max 2MB</div>
+          </div>
+		      <img ng-show="addTradeForm.file.$valid" ngf-thumbnail="cover" class="book-thumb">
+		      <button ng-click="cover = null" ng-show="cover">Remove</button>
+	      </div>
+
+	      <button ng-disabled="!addTradeForm.$valid" ng-click="uploadPic(cover)" class="btn">
+	      	Submit
+	      </button>
+	      
+	      <span ng-show="cover.result">Upload successful</span>
+	      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+		</form>
+	</div>
+</div>

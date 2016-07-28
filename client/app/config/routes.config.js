@@ -41,6 +41,14 @@ angular.module('booksApp')
 						$title: function() { return 'Trade Info'; }
 					}
 				})
+				.state('/manual', {
+					url: '/manual',
+					templateUrl: 'app/trades/trade_manual/trade_manual.html',
+					controller: 'TradeManualCtrl',
+					resolve: {
+						$title: function() { return 'Add Manually'; }
+					}
+				})
 				.state('/login', { 
 					url: '/login',
 				 	templateUrl: 'app/auth/login/login.html',

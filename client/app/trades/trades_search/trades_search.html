@@ -1,12 +1,14 @@
 <div class="row">
 	<div class="col-md-9 col-md-offset-2">
-		<h1>Search for Book Info</h1>
+		<h1 page-header text-center>Search for Book Info</h1>
 		
-		<p>On this page you can search for titles as compiled by Google Books. Check the results and see if the book you want to trade, or one as close to it as possible, is in the list. Then simply click the book, and a trade will be created. Book title must be entered.</p>
+		<p>On this page you can search for titles as compiled by Google Books. Check the results and see if the book you want to trade, or one as close to it as possible, is in the list. Then simply click the book, and a trade will be created.</p>
+		
+		<p>The only mandatory item is book title, but the more information you enter, the better chance of finding your book.</p>
 		
 		<form method="post" ng-submit="searchBooks()">
 			<div class="form-group">
-				<label for="title">Title</label>
+				<label for="title">Title*</label>
 				<input type="text" class="form-control input-md" name="title" ng-model="formData.title">
 			</div>
 			<h3>Optional Information</h3>

@@ -60,6 +60,17 @@ angular.module('booksApp')
 				});
 		};
 		
+		tradeFactory.manualTradeNoImage = function(tradeData) {
+			return $http.post('/api/trades/add', tradeData)
+				.success(function(results) {
+					data = results;
+					return data;
+				})
+				.error(function(err) {
+					if (err) console.log(err);
+				});
+		};
+		
 		tradeFactory.updateTrade = function(tradeData) {
 			return $http.post('/api/trades/update', tradeData)
 			.success(function(results) {

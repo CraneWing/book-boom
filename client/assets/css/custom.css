@@ -243,13 +243,9 @@ input[type="password"]:focus {
 	text-align: center;
 }
 
-.fade-animation {
-  transition: all 3000ms ease-in-out; 
-  opacity: 0;
-}
-
-.fade-animation.fade-in {
-  opacity: 1;
+.trade-image {
+	width: 90px;
+	height: 130px;
 }
 
 /*** trade details ***/
@@ -260,4 +256,10 @@ input[type="password"]:focus {
 .trade-icon {
 	margin: 15px 0 0 10px;
 	color: #e54e6d;
+}
+
+/*** manual trade addition ***/
+.book-thumb {
+	height: 160px;
+	width: 100px;
 }
